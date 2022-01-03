@@ -1,0 +1,178 @@
+{
+  "products": [
+    "Sweater",
+    "Jelly Shoes",
+    "WindBreaker"
+  ],
+  "posts": [],
+  "allProducts": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "fannyPack"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 4,
+      "item": "overalls"
+    },
+    {
+      "id": 4,
+      "item": "overalls"
+    }
+  ],
+  "Products": [
+    {
+      "id": 5,
+      "item": "Sweater"
+    },
+    {
+      "id": 6,
+      "item": "turtleneck"
+    },
+    {
+      "id": 7,
+      "item": "Jelly Shoes"
+    },
+    {
+      "id": 8,
+      "item": "香蕉"
+    }
+  ],
+  "波峰焊": [
+    {
+      "id": 1,
+      "name": "LDM",
+      "age": 20
+    },
+    {
+      "id": 2,
+      "name": "TBH",
+      "age": 20
+    },
+    {
+      "id": 3,
+      "name": "HQL",
+      "age": 13
+    }
+  ],
+  "用户": [
+    {
+      "id": "admin",
+      "username": "管理员",
+      "password": "admin"
+    },
+    {
+      "id": "ldm",
+      "username": "李道明",
+      "password": "abc123"
+    }
+  ],
+  "工厂区域": [
+    {
+      "id": 1,
+      "name": "生产指挥中心",
+      "区域工种": [
+        {
+          "id": 1,
+          "name": "公告"
+        },
+        {
+          "id": 2,
+          "name": "生产指令"
+        },
+        {
+          "id": 3,
+          "name": "报表"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "一区"
+    },
+    {
+      "id": 3,
+      "name": "二区",
+      "区域工种": [
+        {
+          "id": 1,
+          "name": "外观检查"
+        },
+        {
+          "id": 2,
+          "name": "生产指令"
+        },
+        {
+          "id": 3,
+          "name": "报表"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "仓库"
+    },
+    {
+      "id": 5,
+      "name": "波峰焊"
+    }
+  ]
+}
