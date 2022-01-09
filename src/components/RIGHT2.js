@@ -24,7 +24,7 @@ import Link from '@mui/material/Link'
 
 
 export default function RIGHT2(props) {
-    const drawerWidth = 240;
+    const drawerWidth = 200;
     
     const 抽屉显示的样式 = {
         // color: 'blue',

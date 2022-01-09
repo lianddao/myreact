@@ -23,9 +23,10 @@ import {Button, CardContent} from "@material-ui/core";
 import {useEffect, useState} from 'react'
 import axios from "../axios_intance";
 import Collapse from '@mui/material/Collapse'
+import 右侧商品类别折叠列表 from './右侧商品类别折叠列表'
 
 export default function LEFT2(props) {
-    const drawerWidth = 240;
+    const drawerWidth = 200;
     
     const thisName = props.工厂区域.name
     
@@ -49,7 +50,6 @@ export default function LEFT2(props) {
     useEffect(() => {
         const fetch = async () => {
             const response = await axios.get("/ProductCategory")
-            debugger
             setProductCategory(response.data)
         }
         fetch()
@@ -97,7 +97,9 @@ export default function LEFT2(props) {
             <Box sx={{overflow: 'auto'}}>
                 <h1>{thisName}</h1>
                 
-                <List>
+                <右侧商品类别折叠列表 商品类别数据={ProductCategory} />
+                
+                <List sx={{display: 'none'}}>
                     {
                         ProductCategory.map((n, i) =>
                             <Box>
@@ -126,44 +128,44 @@ export default function LEFT2(props) {
                     }
                 </List>
                 
-                <List>
-                    {
-                        props.工厂区域.区域工种 == null ? [] : props.工厂区域.区域工种.map((item, index) =>
-                            (
-                                <Link to={encodeURI('/' + thisName + '/' + item.name)}>
-                                    <ListItem button key={item.id}>
-                                        <ListItemIcon>
-                                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                        </ListItemIcon>
-                                        <ListItemText primary={item.name} />
-                                    </ListItem>
-                                
-                                </Link>
-                            ))
-                    }
-                </List>
-                <Divider />
-                <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+                {/*<List>*/}
+                {/*    {*/}
+                {/*        props.工厂区域.区域工种 == null ? [] : props.工厂区域.区域工种.map((item, index) =>*/}
+                {/*            (*/}
+                {/*                <Link to={encodeURI('/' + thisName + '/' + item.name)}>*/}
+                {/*                    <ListItem button key={item.id}>*/}
+                {/*                        <ListItemIcon>*/}
+                {/*                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}*/}
+                {/*                        </ListItemIcon>*/}
+                {/*                        <ListItemText primary={item.name} />*/}
+                {/*                    </ListItem>*/}
+                {/*                */}
+                {/*                </Link>*/}
+                {/*            ))*/}
+                {/*    }*/}
+                {/*</List>*/}
+                {/*<Divider />*/}
+                {/*<List>*/}
+                {/*    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (*/}
+                {/*        <ListItem button key={text}>*/}
+                {/*            <ListItemIcon>*/}
+                {/*                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}*/}
+                {/*            </ListItemIcon>*/}
+                {/*            <ListItemText primary={text} />*/}
+                {/*        </ListItem>*/}
+                {/*    ))}*/}
+                {/*</List>*/}
+                {/*<Divider />*/}
+                {/*<List>*/}
+                {/*    {['All mail', 'Trash', 'Spam'].map((text, index) => (*/}
+                {/*        <ListItem button key={text}>*/}
+                {/*            <ListItemIcon>*/}
+                {/*                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}*/}
+                {/*            </ListItemIcon>*/}
+                {/*            <ListItemText primary={text} />*/}
+                {/*        </ListItem>*/}
+                {/*    ))}*/}
+                {/*</List>*/}
             </Box>
         </Drawer>
     )
