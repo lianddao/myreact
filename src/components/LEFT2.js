@@ -1,28 +1,9 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import BikeScooterIcon from '@mui/icons-material/BikeScooter';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
-import CheckroomIcon from '@mui/icons-material/Checkroom';
-import EarbudsIcon from '@mui/icons-material/Earbuds';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import {Link as RouterLink, Link} from "react-router-dom";
-import {Button, CardContent} from "@material-ui/core";
-import {useEffect, useState} from 'react'
 import axios from "../axios_intance";
-import Collapse from '@mui/material/Collapse'
 import 右侧商品类别折叠列表 from './右侧商品类别折叠列表'
 
 export default function LEFT2(props) {
@@ -57,33 +38,6 @@ export default function LEFT2(props) {
     
     
     
-    // 折叠效果
-    const [open, setOpen] = React.useState(false);
-    const handleClick = () => {
-        setOpen((prevOpen) => ! prevOpen);
-    };
-    // function ListItemLink(props) {
-    //     const {to, open, ...other} = props;
-    //     const primary = breadcrumbNameMap[to];
-    //
-    //     let icon = null;
-    //     if (open != null) {
-    //         icon = open ? <ExpandLess /> : <ExpandMore />;
-    //     }
-    //
-    //     return (
-    //         <li>
-    //             <ListItem button component={RouterLink} to={to} {...other}>
-    //                 <ListItemText primary={primary} />
-    //                 {icon}
-    //             </ListItem>
-    //         </li>
-    //     );
-    // }
-    
-    
-    
-    const rootCategoryIcons = [<BikeScooterIcon />, <SettingsInputComponentIcon />, <CheckroomIcon />, <EarbudsIcon />]
     
     
     return (
@@ -99,34 +53,6 @@ export default function LEFT2(props) {
                 
                 <右侧商品类别折叠列表 商品类别数据={ProductCategory} />
                 
-                <List sx={{display: 'none'}}>
-                    {
-                        ProductCategory.map((n, i) =>
-                            <Box>
-                                <ListItem button onClick={handleClick}>
-                                    <ListItemIcon>
-                                        {rootCategoryIcons[i]}
-                                    </ListItemIcon>
-                                    <ListItemText>{n.Name}</ListItemText>
-                                    <ExpandMore />
-                                </ListItem>
-                                <Collapse component="div" in={open} timeout="auto" unmountOnExit>
-                                    <List>
-                                        {
-                                            n.children.map((m) =>
-                                                <ListItem>
-                                                    <ListItemIcon />
-                                                    <ListItemText>{m.Name}</ListItemText>
-                                                </ListItem>
-                                            )
-                                        }
-                                    </List>
-                                </Collapse>
-                                <Divider />
-                            </Box>
-                        )
-                    }
-                </List>
                 
                 {/*<List>*/}
                 {/*    {*/}

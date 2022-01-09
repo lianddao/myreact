@@ -12,6 +12,7 @@ import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputCompone
 import CheckroomIcon from '@mui/icons-material/Checkroom'
 import EarbudsIcon from '@mui/icons-material/Earbuds'
 import {useState} from 'react'
+import ExpandLess from '@mui/icons-material/ExpandLess'
 
 export default function 右侧商品类别折叠单项(props) {
     const 图标 = [<BikeScooterIcon />, <SettingsInputComponentIcon />, <CheckroomIcon />, <EarbudsIcon />]
@@ -20,16 +21,13 @@ export default function 右侧商品类别折叠单项(props) {
     
     let 展开位置 = props.展开位置, 自身位置 = props.自身位置
     
-    const [自身状态, set自身状态] = useState(true)
+    const [自身状态, set自身状态] = useState(展开位置 === 自身位置)
+    
+    let 状态图标 = 展开位置 === 自身位置 ? <ExpandLess /> : <ExpandMore />
     
     
     const 点击大类别 = () => {
-        if (展开位置 === 自身位置) {
-            set自身状态(! 自身状态)
-        } else {
-            props.回调展开位置(自身位置)
-        }
-        
+        props.回调展开位置(自身位置)
     }
     
     
@@ -40,9 +38,9 @@ export default function 右侧商品类别折叠单项(props) {
                     {图标[自身位置]}
                 </ListItemIcon>
                 <ListItemText>{大类别.Name}</ListItemText>
-                <ExpandMore />
+                {状态图标}
             </ListItemButton>
-            <Collapse component="div" in={展开位置 === 自身位置 && 自身状态} timeout="auto" unmountOnExit>
+            <Collapse component="div" in={展开位置 === 自身位置} timeout="auto" unmountOnExit>
                 <List>
                     {
                         大类别.children.map((小类别) =>
