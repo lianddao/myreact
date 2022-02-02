@@ -59,3 +59,9 @@ code {
     color: #000000de;
     text-decoration: none;
 }
+
+.Mui-selected{
+    background-color: turquoise;
+    color: rebeccapurple !important;
+    font-weight: 600
+}

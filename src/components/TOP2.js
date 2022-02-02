@@ -19,9 +19,12 @@ import {Fragment, useEffect, useState} from "react";
 import {Button, ButtonGroup} from "@material-ui/core";
 import {Link, NavLink} from "react-router-dom";
 import axios from '../axios_intance'
+import NavTabs from "../mui/NavTabs";
+import NavTabs2 from "./NavTabs2";
+import NavTabs3 from "./NavTabs3";
 
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 
 const Search = styled('div')(({theme}) => ({
@@ -111,6 +114,9 @@ export default function TOP2(props) {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+
+
+    //#region ✦ render menu / mobileMenu
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -153,7 +159,7 @@ export default function TOP2(props) {
             <MenuItem>
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="error">
-                        <MailIcon/>
+                        <MailIcon />
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
@@ -165,7 +171,7 @@ export default function TOP2(props) {
                     color="inherit"
                 >
                     <Badge badgeContent={17} color="error">
-                        <NotificationsIcon/>
+                        <NotificationsIcon />
                     </Badge>
                 </IconButton>
                 <p>Notifications</p>
@@ -178,12 +184,14 @@ export default function TOP2(props) {
                     aria-haspopup="true"
                     color="inherit"
                 >
-                    <AccountCircle/>
+                    <AccountCircle />
                 </IconButton>
                 <p>Profile</p>
             </MenuItem>
         </Menu>
     );
+    //#endregion
+
 
 
     return (
@@ -199,7 +207,7 @@ export default function TOP2(props) {
                         onClick={切换抽屉状态}
                         sx={{mr: 2}}
                     >
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -211,30 +219,32 @@ export default function TOP2(props) {
                     </Typography>
 
 
-                    <ButtonGroup variant="text" aria-label="text button group">
-                        {
-                            导航按钮数据.map((item) =>
-                                <nav>
-                                    <Link to={encodeURI('/' + item.name)}>
-                                        <Button variant="contained"
-                                                onClick={() => {
-                                                    props.工厂区域点击回调(item);
-                                                    console.log(item);
-                                                }}>{item.name}</Button>
-                                    </Link>
-                                </nav>
-                            )
-                        }
+
+                    {/*<ButtonGroup variant="text" aria-label="text button group">*/}
+                    {/*    {*/}
+                    {/*        导航按钮数据.map((item) =>*/}
+                    {/*            <nav>*/}
+                    {/*                <Link to={encodeURI('/' + item.name)}>*/}
+                    {/*                    <Button variant="contained"*/}
+                    {/*                            onClick={() => {*/}
+                    {/*                                props.工厂区域点击回调(item);*/}
+                    {/*                                console.log(item);*/}
+                    {/*                            }}>{item.name}</Button>*/}
+                    {/*                </Link>*/}
+                    {/*            </nav>*/}
+                    {/*        )*/}
+                    {/*    }*/}
+                    {/*</ButtonGroup>*/}
 
 
-                    </ButtonGroup>
+                    <NavTabs3 />
 
 
-                    <Box sx={{flexGrow: 1}}/>
+                    <Box sx={{flexGrow: 1}} />
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
-                                <MailIcon/>
+                                <MailIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -243,7 +253,7 @@ export default function TOP2(props) {
                             color="inherit"
                         >
                             <Badge badgeContent={17} color="error">
-                                <NotificationsIcon/>
+                                <NotificationsIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -255,7 +265,7 @@ export default function TOP2(props) {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle/>
+                            <AccountCircle />
                         </IconButton>
                     </Box>
                     <Box sx={{display: {xs: 'flex', md: 'none'}}}>
@@ -267,7 +277,7 @@ export default function TOP2(props) {
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
-                            <MoreIcon/>
+                            <MoreIcon />
                         </IconButton>
                     </Box>
                 </Toolbar>

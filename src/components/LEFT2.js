@@ -7,7 +7,7 @@ import axios from "../axios_intance";
 import 右侧商品类别折叠列表 from './右侧商品类别折叠列表'
 
 export default function LEFT2(props) {
-    const drawerWidth = 200;
+    const drawerWidth = 210;
     
     const thisName = props.工厂区域.name
     
