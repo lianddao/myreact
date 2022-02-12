@@ -1,4 +1,3 @@
-// import './App.css';
 import * as React from "react";
 import {useEffect, useState} from "react";
 import {Link, Route, Routes} from "react-router-dom";
@@ -15,31 +14,20 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 
 
-
-
 function App() {
     const [isLeftOpen, setIsLeftOpen] = useState(true)
-    
+
     const [工厂区域, set工厂区域] = useState({id: -1, name: '', 区域工种: []})
-    
-    useEffect(() => {
-        // console.log("App say:" + isLeftOpen)
-        // console.log(工厂区域)
-    });
-    
-    // console.log("App 加载")
-    
+
     return (
         <div>
-            
-            
             <Box sx={{display: 'flex'}}>
                 <TOP2 抽屉初始状态={isLeftOpen} 抽屉状态监听回调={setIsLeftOpen} 工厂区域={工厂区域} 工厂区域点击回调={set工厂区域} />
                 <LEFT2 抽屉初始状态={isLeftOpen} 工厂区域={工厂区域} />
                 <RIGHT2 抽屉初始状态={isLeftOpen} 工厂区域={工厂区域} />
             </Box>
-            
-            
+
+
             {/*<About />*/}
             {/*<Left></Left>*/}
             {/*<Right></Right>*/}

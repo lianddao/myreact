@@ -24,64 +24,20 @@ import NavTabs2 from "./NavTabs2";
 import NavTabs3 from "./NavTabs3";
 
 
-// const drawerWidth = 240;
 
-
-const Search = styled('div')(({theme}) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-    },
-}));
-
-const SearchIconWrapper = styled('div')(({theme}) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({theme}) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-}));
-
+/**
+ * 上边
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function TOP2(props) {
-
-    const [导航按钮数据, set导航按钮数据] = useState([])
-
-
-    const 切换抽屉状态 = (e) => {
-        console.log("Top say:" + !props.抽屉初始状态)
-        props.抽屉状态监听回调(!props.抽屉初始状态)
-    }
-
+    const [导航按钮数据, 设置导航按钮数据] = useState([])
 
     useEffect(() => {
         const fetchItems = async () => {
             const result = await axios.get("/工厂区域")
-            set导航按钮数据(result.data)
+            设置导航按钮数据(result.data)
         }
 
         fetchItems()
@@ -89,8 +45,13 @@ export default function TOP2(props) {
 
 
 
+    const 切换抽屉状态 = (e) => {
+        props.抽屉状态监听回调(!props.抽屉初始状态)
+    }
 
 
+
+    //#region ✦ handle menu / mobileMenu
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -113,6 +74,7 @@ export default function TOP2(props) {
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+    //#endregionF
 
 
 
@@ -203,7 +165,6 @@ export default function TOP2(props) {
                         size="large"
                         edge="start"
                         color="inherit"
-                        aria-label="open drawer"
                         onClick={切换抽屉状态}
                         sx={{mr: 2}}
                     >
@@ -240,6 +201,8 @@ export default function TOP2(props) {
                     <NavTabs3 />
 
 
+
+                    {/*//#region 右侧三个按钮*/}
                     <Box sx={{flexGrow: 1}} />
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -280,6 +243,9 @@ export default function TOP2(props) {
                             <MoreIcon />
                         </IconButton>
                     </Box>
+                    {/*//#endregion*/}
+
+
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}
@@ -287,3 +253,48 @@ export default function TOP2(props) {
         </Fragment>
     );
 }
+
+
+
+
+
+
+const Search = styled('div')(({theme}) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+        backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+    },
+}));
+
+const SearchIconWrapper = styled('div')(({theme}) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({theme}) => ({
+    color: 'inherit',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '20ch',
+        },
+    },
+}));

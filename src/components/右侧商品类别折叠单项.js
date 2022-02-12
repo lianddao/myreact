@@ -13,24 +13,37 @@ import CheckroomIcon from '@mui/icons-material/Checkroom'
 import EarbudsIcon from '@mui/icons-material/Earbuds'
 import {useState} from 'react'
 import ExpandLess from '@mui/icons-material/ExpandLess'
+import Link from "@mui/material/Link";
+import {Link as RouterLink, Route, Routes} from "react-router-dom";
 
+
+/**
+ * 右侧商品类别折叠单项
+ * @param props
+ * @returns {JSX.Element}
+ */
 export default function 右侧商品类别折叠单项(props) {
     const 图标 = [<BikeScooterIcon />, <SettingsInputComponentIcon />, <CheckroomIcon />, <EarbudsIcon />]
-    
+
     let 大类别 = props.元数据
-    
+
     let 展开位置 = props.展开位置, 自身位置 = props.自身位置
-    
+
     const [自身状态, set自身状态] = useState(展开位置 === 自身位置)
-    
+
     let 状态图标 = 展开位置 === 自身位置 ? <ExpandLess /> : <ExpandMore />
-    
-    
+
+
     const 点击大类别 = () => {
         props.回调展开位置(自身位置)
     }
-    
-    
+
+    const 点击小类别 = () => {
+        alert('hello,small')
+    }
+
+
+
     return (
         <>
             <ListItemButton onClick={点击大类别}>
@@ -43,10 +56,14 @@ export default function 右侧商品类别折叠单项(props) {
             <Collapse component="div" in={展开位置 === 自身位置} timeout="auto" unmountOnExit>
                 <List>
                     {
-                        大类别.children.map((小类别) =>
-                            <ListItem>
+                        大类别.children.map((小类别, index) =>
+                            <ListItem key={index}>
                                 <ListItemIcon />
-                                <ListItemText>{小类别.Name}</ListItemText>
+                                <ListItemText onClick={点击小类别}>{小类别.Name}</ListItemText>
+                                <nav>
+                                    <RouterLink to={encodeURI('/产品/子分类的产品/' + 小类别.ProductSubcategoryID)}>{小类别.Name}</RouterLink>
+                                </nav>
+
                             </ListItem>
                         )
                     }
