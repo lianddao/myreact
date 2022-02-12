@@ -14,7 +14,7 @@ import EarbudsIcon from '@mui/icons-material/Earbuds'
 import {useState} from 'react'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import Link from "@mui/material/Link";
-import {Link as RouterLink, Route, Routes} from "react-router-dom";
+import {NavLink, Route, Routes} from "react-router-dom";
 
 
 /**
@@ -38,10 +38,6 @@ export default function 右侧商品类别折叠单项(props) {
         props.回调展开位置(自身位置)
     }
 
-    const 点击小类别 = () => {
-        alert('hello,small')
-    }
-
 
 
     return (
@@ -59,9 +55,11 @@ export default function 右侧商品类别折叠单项(props) {
                         大类别.children.map((小类别, index) =>
                             <ListItem key={index}>
                                 <ListItemIcon />
-                                <ListItemText onClick={点击小类别}>{小类别.Name}</ListItemText>
                                 <nav>
-                                    <RouterLink to={encodeURI('/产品/子分类的产品/' + 小类别.ProductSubcategoryID)}>{小类别.Name}</RouterLink>
+                                    <NavLink
+                                        to={encodeURI('/产品/子分类的产品/' + 小类别.ProductSubcategoryID)}
+                                        style={{color: 'black', textDecoration: 'none'}}
+                                    >{小类别.Name}</NavLink>
                                 </nav>
 
                             </ListItem>
